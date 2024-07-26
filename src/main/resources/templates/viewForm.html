@@ -1,0 +1,53 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+	<div id="left">
+	</div>
+	
+	<div id="main">
+		<h1 th:text="${board.board_name}"></h1>
+		<form name="viewForm">
+		<table>
+			<tr>
+				<td>글 제목</td>
+				<td th:text="${post.title}"></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td th:text="${post.user_id}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea name="content" th:text="${post.content}" readonly></textarea></td>
+			</tr>
+		</table>
+		<span th:if="${#authentication.name == post.user_id}">
+		<input type="button" value="글 수정" th:onclick="|location.href='/edit/' + ${post.post_no}|">
+		<input type="button" value="글 삭제" th:onclick="|location.href='/delete/' + ${post.post_no}|">
+		</span>
+		<input type="button" value="글 목록" th:onclick="|location.href='/board/' + ${board.board_no}|">
+		</form>
+		<br>
+		<form name="reply" action="/reply" method="post">
+			<table>
+			<tr sec:authorize="isAuthenticated()">
+				<th>댓글</th>
+				<td>
+					<input type="text" name="comment">
+					<input type="hidden" name="post_no" th:value="${post.post_no}">
+					<input type="hidden" name="user_id" th:value="${#authentication.name}">
+				</td>
+				<td><input type="submit" value="입력"></td>
+			</tr>
+			<tr th:each="reply: ${reply_list}">
+				<td th:text="${reply.user_id}"></td>
+				<td th:text="${reply.comment}"></td>
+				<td th:text="${reply.create_date}"></td>
+			</tr>
+		</table>
+		</form>
+	</div>
+	
+	<div id="right">
+	</div>
+</div>
+</html>

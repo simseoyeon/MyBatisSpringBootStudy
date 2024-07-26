@@ -1,0 +1,38 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+	<meta charset="UTF-8">
+	<div id="left">
+	</div>
+	<div id="main">
+		<h1>문의하기</h1>
+		<form id="inquireForm" name="inquireForm" action="/sendMail" method="post">
+			<table>
+				<tr>
+					<td>제목</td>
+					<td><input type="text" name="title"></td>
+				</tr>
+				<tr>
+					<td>이메일</td>
+					<td><input type="text" name="email"></td>
+				</tr>
+				<tr>
+					<td>이름</td>
+					<td><input type="text" name="name"></td>
+				</tr>
+				<tr>
+					<td>전화번호</td>
+					<td><input type="text" name="telno"></td>
+				</tr>
+				<tr>
+					<td>내용</td>
+					<td><textarea name="content"></textarea></td>
+				</tr>
+			</table>
+			<input type="button" value="문의하기" onclick="sendMail()">
+			<input type="reset" value="다시쓰기">
+		</form>
+	</div>
+</div>
+<div id="right">
+</div>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>메일 전송 확인</title>
+    <script>
+        window.onload = function(){
+            setTimeout(function(){
+                window.close();
+            },3000);
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <br>
+    <div th:text="${msg}"></div>
+    <br>
+    <br>
+</body>
+</html>

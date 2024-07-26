@@ -1,0 +1,44 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+
+	<div id="main">
+		<h1>회원관리</h1>
+		<form name="manageForm" action="manage" method="post">
+			<table>
+				<tr>
+					<th>번호</th>
+					<th>아이디</th>
+					<th>패스워드</th>
+					<th>권한</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+				<tr th:each="dto, no: ${memberList}">
+					<td th:text="${no.index+1}"></td>
+					<td th:text="${dto.userid}"></td>
+					<td>
+						<input type="password" name="userpwd" th:value="${dto.userpwd}">
+					</td>
+					<td>
+						<select name="permit">
+						<option value=0 th:selected = "${dto.permit == 0}">사용자</option>
+						<option value=9 th:selected = "${dto.permit == 9}">관리자</option>
+						</select>
+					</td>
+					<td>
+						<input type="button" value="수정"
+								th:data-userid = "${dto.userid}"
+								 onclick="userSubmit(this)">
+					</td>
+					<td>
+						<input type="button" value="삭제" th:data-userid = "${dto.userid}"
+								onclick="deleteUser(this)">
+					</td>
+				</tr>
+			</table>
+			<br>
+			<input type="button" value="홈으로" onclick="location.href='/'">
+		</form>
+	</div>
+	<div id="right"></div>
+</html>

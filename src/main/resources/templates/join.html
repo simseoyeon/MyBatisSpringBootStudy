@@ -1,0 +1,82 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+<div id="contents">
+            <div id="main">
+                <h1>회원가입</h1>
+                 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+                
+                <form name="joinForm" id="joinForm" action="join" method="post">
+                    <table>
+                        <tr>
+                            <td>
+                                <label for="userid">아이디</label>
+                            </td>
+                            <td>
+                                <input type="text" name="userid" id="userid" placeholder="3~8자 사이로 입력">
+                                <input type="button" onclick="checkId()" value="중복확인">
+                            </td>
+                        </tr>
+                        <tr>
+                        	<td colspan=2 id="id-area"></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="userpwd">패스워드</label>
+                            </td>
+                            <td>
+                                <input type="password" name="userpwd" id="userpwd" placeholder="4~20자 입력">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="username">이름</label>
+                            </td>
+                            <td>
+                                <input type="text" name="username" id="username">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="birthdate">생년월일</label>
+                            </td>
+                            <td>
+                                <input type="date" name="birthdate" id="birthdate">
+                            </td>
+                        </tr>
+                            
+                        <tr>
+                            <td>
+                                <label for="gender">성별</label>
+                            </td>
+                            <td>
+                                <input type="radio" name="gender" id="genderM" value="M">남자
+                                <input type="radio" name="gender" id="genderF" value="W">여자
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="telnumber">전화번호</label>
+                            </td>
+                            <td>
+                                <input type="text" name="telnumber" id="telnumber">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for="addr">주소</label>
+                            </td>
+                            <td>
+                                <input type="text" name="addr" id="addr">
+                            </td>
+                        </tr>
+                    </table>
+                    <br>
+                    <input type="button" value="회원가입" onclick="checkJoinForm()">
+                    <input type="reset" value="다시입력">
+                    <input type="submit" value="홈으로" onclick="location.href='/'">
+                </form>
+            </div>
+        </div>
+        <script src="js/script.js"></script>
+</div>
+</html>

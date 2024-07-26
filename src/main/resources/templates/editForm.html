@@ -1,0 +1,33 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+	<div id="left">
+	</div>
+	
+	<div id="main">
+		<h1 th:text="${board.board_name}"></h1>
+		<form name="editForm" action="/edit" method="post">
+		<table>
+			<tr>
+				<td>글 제목</td>
+				<td><input type="text" name="title" th:value="${post.title}"></td>
+			</tr>
+			<tr>
+				<td>작성자</td>
+				<td th:text="${post.user_id}"></td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td><textarea name="content" th:text="${post.content}"></textarea></td>
+			</tr>
+		</table>
+		<input type="hidden" name="post_no" th:value="${post.post_no}">
+		<input type="submit" value="저장">
+		<input type="reset" value="다시쓰기">
+		<input type="button" value="글 목록" th:onclick="|location.href='/board/' + ${board.board_no}|">
+		</form>
+	</div>
+	
+	<div id="right">
+	</div>
+</div>
+</html>

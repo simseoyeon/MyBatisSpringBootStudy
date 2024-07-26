@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/css/index.css}" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');</style>
+    <title>아이디 찾기</title>
+</head>
+<body>
+
+<form name="findIdForm" action="/findid" method="post">
+    <br>
+    <h1>아이디 찾기</h1>
+    <br>
+    <div id="msg"></div>
+    <div th:if="${msg == 'error'}" id="err_msg">
+        <p>※ 해당하는 사용자 정보가 없습니다.</p>
+    </div>
+    <div th:if="${msg == 'ok'}" id="ok_msg">
+        <p>※ 이메일을 전송하였습니다.</p>
+    </div>
+    <table>
+        <tr>
+            <td for="username">이름</td>
+            <td><input id="username" name=username type="text"></td>
+        </tr>
+        <tr>
+            <td for="birthdate">생년월일</td>
+            <td><input id="birthdate" name="birthdate" type="date"></td>
+        </tr>
+        <tr>
+            <td for="usertel">전화번호</td>
+            <td><input id="usertel" name="usertel" type="text"></td>
+        </tr>
+    </table>
+    <br>
+    <input type="submit" value="아이디 찾기">
+    <input type="button" value="창닫기" onclick="window.close()">
+    <br>
+</form>
+
+</body>
+</html>

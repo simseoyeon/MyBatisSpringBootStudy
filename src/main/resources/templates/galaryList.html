@@ -1,0 +1,22 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+  <div id="left"></div>
+  <div id="main">
+    <h1>사진 갤러리</h1>
+    <div sec:authorize="isAuthenticated()">
+      <input type="button" value="사진등록" onclick="locatopn.href='/addGalary'">
+    </div>
+    <div class="galary_list">
+      <div th:each="dto : ${list}" class="galary_frame">
+        <!-- 해당 아이디에 대한 이미지 가져오기 thumbnali 이용해 해당 아이디 가져오기 -->
+        <img th:src="@{'/downloadImg/' + ${dto.img_id}}">
+        <p>
+          <a th:text="${dto.title}" th:href="@{'/imgview/' + ${dto.id}}"></a>
+        </p>
+        <p th:text="${dto.userid}"></p>
+      </div>
+    </div>
+  </div>
+  <div id="right"></div>
+</div>
+</html>

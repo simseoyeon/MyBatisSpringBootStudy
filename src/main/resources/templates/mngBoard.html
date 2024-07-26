@@ -1,0 +1,37 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+	<div id="left">
+	</div>
+	<div id="main">
+		<h1>게시판 관리</h1>
+		<form name="addBoard" action="/addBoard" method="post">
+		<span>게시판 이름: </span>
+		<input type="text" name="board_name">
+		<span>설명 : </span>
+		<input type="text" name="descript">
+		<input type="submit" value="추가">
+		</form>
+		<form name="mngBoardForm" action="/manageBoard" method="post">
+			<table>
+				<tr>
+					<th>게시판번호</th>
+					<th>게시판 이름</th>
+					<th>설명</th>
+					<th>수정</th>
+					<th>삭제</th>
+				</tr>
+				<tr th:each="dto : ${menu}">
+					<td th:text="${dto.board_no}"></td>
+					<td><input type="text" name="board_name" th:value="${dto.board_name}"></td>
+					<td><input type="text" name="descript" th:value="${dto.descript}"></td>
+					<td><input type="button" value="수정" th:data-boardno="${dto.board_no}" onclick="editBoard(this)"></td>
+					<td><input type="button" value="삭제" th:data-boardno="${dto.board_no}" onclick="deleteBoard(this)"></td>
+			</table>
+			<br>
+			<input type="button" value="홈으로" onclick="location.href='/'">
+		</form>
+	</div>
+	<div id="right">
+	</div>
+</div>
+</html>

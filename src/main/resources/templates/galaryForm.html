@@ -1,0 +1,31 @@
+<html layout:decorate="~{layout}">
+<div layout:fragment="content" id="contents">
+  <div id="left"></div>
+  <div id="main">
+    <h1>사진 등록</h1>
+    <form name="galaryForm" action="/addGalary" method="post"
+          enctype="multipart/form-data">
+      <table>
+        <tr>
+          <td>글 제목</td>
+          <td><input type="text" name="title"></td>
+        </tr>
+        <tr>
+          <td>작성자</td>
+          <td><input type="text" name="userid"
+                     th:value="${#authentication.name}"></td>
+        </tr>
+        <tr>
+          <td>사진</td>
+          <td><input type="button" value="파일추가" onclick="addImg(this)">
+          </td>
+        </tr>
+      </table>
+      <input type="button" value="저장" onclick="galarySubmit()">
+      <input type="reset" value="다시쓰기">
+      <input type="button" value="글 목록" onclick="location.href='/galary'">
+    </form>
+  </div>
+  <div id="right"></div>
+</div>
+</html>
