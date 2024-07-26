@@ -1,7 +1,4 @@
 package com.myweb.firstboot.controller;
 
-public class HelloController2 {
-
-
-
+public class HelloController3 {
 }
